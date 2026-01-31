@@ -18,7 +18,7 @@ class EndToEndIntegrationTest {
         var analyzer = new TransactionAnalyzer();
 
         var txs = reader.readCsv(Path.of("src/test/resources/sample-data/transactions-valid.csv"));
-        txs.forEach(repo::add);
+        txs.forEach( repo::add);
 
         var totals = analyzer.calculateTotalPerCustomer(repo.getAll());
         assertFalse(totals.isEmpty());

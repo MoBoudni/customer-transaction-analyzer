@@ -22,8 +22,8 @@ class TransactionAnalyzerTest {
                 new Transaction("B", 7.0, "X", LocalDate.now())
         );
         Map<String, Double> totals = analyzer.calculateTotalPerCustomer(txs);
-        assertEquals(15.0, totals.get("A"));
-        assertEquals(7.0, totals.get("B"));
+        assertEquals(15.0, totals.get("A"), 1e-9);
+        assertEquals(7.0, totals.get("B"), 1e-9);
     }
 
     @Test
@@ -42,5 +42,16 @@ class TransactionAnalyzerTest {
     void averageAmountEmptyReturnsEmpty() {
         OptionalDouble avg = analyzer.calculateAverageAmount(List.of());
         assertTrue(avg.isEmpty());
+    }
+
+    @Test
+    void averageAmountNonEmpty() {
+        List<Transaction> txs = List.of(
+                new Transaction("A", 2.0, "C", LocalDate.now()),
+                new Transaction("B", 4.0, "C", LocalDate.now())
+        );
+        OptionalDouble avg = analyzer.calculateAverageAmount(txs);
+        assertTrue(avg.isPresent());
+        assertEquals(3.0, avg.getAsDouble(), 1e-9);
     }
 }

@@ -6,11 +6,11 @@ import org.boudni.transactionanalyzer.core.exception.InvalidTransactionDateExcep
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Transaction {
-    private String customer, category;
-    private double amount;
-    private LocalDate date;
-    public Transaction(String customer, double amount, String category, LocalDate Date) {
+public final class Transaction {
+    private final String customer, category;
+    private final double amount;
+    private final LocalDate date;
+    public Transaction(String customer, double amount, String category, LocalDate date) {
 
         if (customer == null || customer.isBlank()) {
             throw new IllegalArgumentException("Customer must not be null or blank");

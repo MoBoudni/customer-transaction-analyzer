@@ -9,9 +9,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TransactionRepositoryTest {
+class InMemoryTransactionRepositoryTest {
 
-    private TransactionRepository repo;
+    private InMemoryTransactionRepository repo;
 
     @BeforeEach
     void setUp() {
@@ -68,5 +68,3 @@ class TransactionRepositoryTest {
         assertTrue(repo.getAll().isEmpty());
     }
 }
-
-
