@@ -1,4 +1,3 @@
 customer,amount,category,date
-alice,12.50,FOOD,2025-01-01
-bob,7.00,TRANSPORT,2025-01-02
-alice,5.00,FOOD,2025-01-03
+alice,10.50,FOOD,2023-01-01
+bob,7.00,TRAVEL,2023-01-02
