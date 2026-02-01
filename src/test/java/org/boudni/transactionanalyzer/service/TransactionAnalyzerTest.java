@@ -54,4 +54,19 @@ class TransactionAnalyzerTest {
         assertTrue(avg.isPresent());
         assertEquals(3.0, avg.getAsDouble(), 1e-9);
     }
+
+    @Test
+    void calculateAverageAmount_computesAverageAndEmpty() {
+        var analyzer = new TransactionAnalyzer();
+
+        // empty -> OptionalDouble.empty()
+        assertTrue(analyzer.calculateAverageAmount(List.of()).isEmpty());
+
+        // average of two values
+        var txs = List.of(
+                new Transaction("a", 2.0, "C", LocalDate.of(2023,1,1)),
+                new Transaction("b", 4.0, "C", LocalDate.of(2023,1,2))
+        );
+        assertEquals(3.0, analyzer.calculateAverageAmount(txs).getAsDouble(), 1e-9);
+    }
 }

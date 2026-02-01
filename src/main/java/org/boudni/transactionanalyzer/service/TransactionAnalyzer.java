@@ -20,11 +20,6 @@ public class TransactionAnalyzer {
                         Collectors.summingDouble(Transaction::getAmount)));
     }
 
-    public OptionalDouble calculateAverageAmount(List<Transaction> txs) {
-        if (txs == null || txs.isEmpty()) return OptionalDouble.empty();
-        return txs.stream().mapToDouble(Transaction::getAmount).average();
-    }
-
     public Optional<String> findMostFrequentCategory(List<Transaction> txs) {
         if (txs == null || txs.isEmpty()) return Optional.empty();
         return txs.stream()
@@ -41,5 +36,10 @@ public class TransactionAnalyzer {
                         .thenComparing(Map.Entry::getKey)) // deterministischer Tie‑Breaker
                 .limit(n)
                 .collect(Collectors.toList());
+    }
+
+    public OptionalDouble calculateAverageAmount(List<Transaction> txs) {
+        if (txs == null || txs.isEmpty()) return OptionalDouble.empty();
+        return txs.stream().mapToDouble(Transaction::getAmount).average();
     }
 }
